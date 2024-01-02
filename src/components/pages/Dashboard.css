@@ -1,0 +1,63 @@
+.dashboard-header {
+  padding: 30px;
+  padding-top: 60px;
+}
+
+.note-container {
+  background-color: #251701;
+  padding: 15px;
+  margin: 10px;
+  width: 175px;
+  text-align: left;
+  overflow: hidden;
+  border-radius: 10px;
+  padding-bottom: 5px;
+}
+
+.notes-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.note-container p {
+  font-size: 10px;
+  margin-bottom: 25px;
+}
+
+.note-container h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.note-container h3 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.create-btn {
+  margin-bottom: 40px;
+}
+
+.close-svg {
+  padding: 5px;
+  color: #9d9d9d;
+  background-color: transparent;
+  transform: translate(0, 0);
+  border-radius: 30px;
+}
+
+.btn-container {
+  text-align: center;
+}
+
+.close-svg:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dashboard {
+  padding-bottom: 10px;
+}

@@ -1,0 +1,32 @@
+.create {
+  background-color: #251701;
+  padding: 50px;
+}
+
+.outer-create {
+  padding: 70px;
+}
+
+.create form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create input {
+  margin-bottom: 15px;
+  padding: 10px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: none;
+  border-radius: 5px;
+}
+
+.create-btn-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.create-btn-container button {
+  width: 100%;
+}
