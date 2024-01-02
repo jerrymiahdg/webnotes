@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "My Google Extension",
-  "description": "description",
+  "name": "Webnotes",
+  "description": "Create helpful notes and reminders for your favorite websites with Webnotes!",
   "version": "1.0.0",
   "action": {
     "default_popup": "index.html",
@@ -11,5 +11,9 @@
     "service_worker": "background.js"
   },
   "permissions": ["scripting", "tabs", "activeTab", "notifications", "storage"],
-  "host_permissions": ["<all_urls>"]
+  "host_permissions": ["<all_urls>"],
+  "icons": {
+    "48": "48.png",
+    "128": "128.png"
+  }
 }
