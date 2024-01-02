@@ -4,9 +4,17 @@ import { useState } from "react";
 import "./Create.css";
 
 const Create = (props) => {
+  const [websiteIsSet, setWebsiteIsSet] = useState(false);
   const [title, setTitle] = useState("");
   const [website, setWebsite] = useState("");
   const [body, setBody] = useState("");
+
+  chrome.storage.local.get(["website"]).then((res) => {
+    if (!websiteIsSet) {
+      setWebsite(res.website);
+      setWebsiteIsSet(true);
+    }
+  });
 
   const titleChangeHandler = (e) => {
     setTitle(e.target.value);

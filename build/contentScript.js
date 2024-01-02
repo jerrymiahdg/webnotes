@@ -1,5 +1,6 @@
 if (typeof init === "undefined") {
   const init = () => {
+    chrome.storage.local.set({ website: window.document.URL });
     chrome.storage.local.get(["notes"]).then((res) => {
       const notes = res.notes || [];
       const validNotes = notes.filter((note) => {

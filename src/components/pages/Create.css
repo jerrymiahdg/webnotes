@@ -1,6 +1,7 @@
 .create {
   background-color: #251701;
   padding: 50px;
+  border-radius: 10px;
 }
 
 .outer-create {
