@@ -5,20 +5,16 @@ import "./Create.css";
 
 const Create = (props) => {
   const [websiteIsSet, setWebsiteIsSet] = useState(false);
-  const [title, setTitle] = useState("");
   const [website, setWebsite] = useState("");
   const [body, setBody] = useState("");
 
-  chrome.storage.local.get(["website"]).then((res) => {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    const tab = tabs[0];
     if (!websiteIsSet) {
-      setWebsite(res.website);
+      setWebsite(tab.url);
       setWebsiteIsSet(true);
     }
   });
-
-  const titleChangeHandler = (e) => {
-    setTitle(e.target.value);
-  };
 
   const bodyChangeHandler = (e) => {
     setBody(e.target.value);
@@ -30,6 +26,9 @@ const Create = (props) => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
+    if (!body || !website) {
+      return;
+    }
     props.getNotes().then((res) => {
       const prev = res.notes || [];
       chrome.storage.local
@@ -37,7 +36,6 @@ const Create = (props) => {
           notes: [
             ...prev,
             {
-              title: title,
               body: body,
               website: website,
               id: Math.floor(Math.random() * 100000),
@@ -47,7 +45,6 @@ const Create = (props) => {
         .then(() => {
           props.getNotes().then((res) => props.setNotes(res.notes));
           setBody("");
-          setTitle("");
           setWebsite("");
           props.setPage("dashboard");
         });
@@ -56,21 +53,24 @@ const Create = (props) => {
 
   const cancelBtnHandler = () => {
     setBody("");
-    setTitle("");
     setWebsite("");
     props.setPage("dashboard");
+    if (props.notesSet && props.notes.length <= 0) {
+      window.close();
+    }
   };
 
   return (
     <div className="outer-create">
       <div className="create">
         <form onSubmit={formSubmitHandler}>
-          <input
-            placeholder="Title"
-            value={title}
-            onChange={titleChangeHandler}
+          <textarea
+            autoFocus
+            rows="3"
+            placeholder="New web note"
+            value={body}
+            onChange={bodyChangeHandler}
           />
-          <input placeholder="Body" value={body} onChange={bodyChangeHandler} />
           <input
             placeholder="Website"
             value={website}

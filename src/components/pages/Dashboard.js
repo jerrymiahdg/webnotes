@@ -4,6 +4,10 @@ import "./Dashboard.css";
 import CloseSVG from "./CloseSVG";
 
 const Dashboard = (props) => {
+  if (props.notesSet && props.notes.length <= 0) {
+    props.setPage("create");
+  }
+
   const deleteHandler = (id) => {
     return () => {
       props.getNotes().then((res) => {
@@ -33,8 +37,7 @@ const Dashboard = (props) => {
       <div className="notes-container">
         {props.notes.map((note) => (
           <div className="note-container">
-            <h2>{note.title}</h2>
-            <p>{note.body}</p>
+            <h2>{note.body}</h2>
             <h3>{note.website}</h3>
             <div className="btn-container">
               <CloseSVG onClick={deleteHandler(note.id)}>X</CloseSVG>

@@ -10,8 +10,12 @@ function App() {
 
   const [notes, setNotes] = useState([]);
   const [page, setPage] = useState("dashboard");
+  const [notesSet, setNotesSet] = useState(false);
 
-  getNotes().then((res) => setNotes(res.notes || []));
+  getNotes().then((res) => {
+    setNotes(res.notes || []);
+    setNotesSet(true);
+  });
 
   return (
     <div className="App">
@@ -21,6 +25,7 @@ function App() {
           setNotes={setNotes}
           setPage={setPage}
           getNotes={getNotes}
+          notesSet={notesSet}
         />
       )}
       {page === "dashboard" && (
@@ -29,6 +34,7 @@ function App() {
           setNotes={setNotes}
           setPage={setPage}
           getNotes={getNotes}
+          notesSet={notesSet}
         />
       )}
     </div>
