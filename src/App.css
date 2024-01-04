@@ -41,6 +41,10 @@ textarea {
   color: #9d9d9d;
 }
 
+textarea {
+  resize: vertical;
+}
+
 input::placeholder,
 textarea::placeholder {
   color: #9d9d9d75;
